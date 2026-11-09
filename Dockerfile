@@ -13,12 +13,11 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY *.py certs/ ./
 
+# Создаём директорию для профиля Chrome с правильными правами
+RUN mkdir -p /app/.chrome-profile && chmod 777 /app/.chrome-profile
+
 ENV CHROME_BIN=/usr/bin/chromium
 ENV DEALWATCH_CHROME=/usr/bin/chromium
 ENV PYTHONUNBUFFERED=1
-
-# Создаём пользователя и директорию для Chrome profile
-RUN useradd -m appuser && mkdir -p /home/appuser/.cache && chown -R appuser /app
-USER appuser
 
 CMD ["python", "dealwatch.py"]
