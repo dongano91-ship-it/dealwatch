@@ -241,6 +241,7 @@ class Chrome:
             "--disable-crash-reporter",
             "--disable-features=Translate,MediaRouter",
             "--disable-background-timer-throttling",
+            "--no-sandbox",
             "--disable-renderer-backgrounding",
             "--window-size=1440,900",
             "--lang=ru-RU",
